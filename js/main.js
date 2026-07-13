@@ -2,7 +2,31 @@
    Klix Digital — Site interactions & GSAP animations
    ========================================================================== */
 
+/* Safety net: if GSAP/ScrollTrigger fail to load (CDN blocked, offline, slow
+   network) or a tab stays backgrounded long enough to stall rAF, .reveal
+   content must not stay permanently invisible. */
+setTimeout(() => {
+  // .reveal/.reveal-item are hidden by a CSS rule, so force them visible explicitly.
+  document.querySelectorAll('.reveal, .reveal-item').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+  // hero/page-header/blob elements are only ever hidden via inline styles GSAP
+  // sets at runtime, so clearing the inline style restores their CSS default.
+  document.querySelectorAll('.hero *, .page-header *, .blob').forEach(el => {
+    el.style.opacity = '';
+    el.style.transform = '';
+  });
+}, 2500);
+
+if (typeof gsap === 'undefined') {
+  console.warn('GSAP failed to load — animations disabled, static layout still functional.');
+} else {
+
 gsap.registerPlugin(ScrollTrigger);
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduceMotion) gsap.globalTimeline.timeScale(50);
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -221,3 +245,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+}
