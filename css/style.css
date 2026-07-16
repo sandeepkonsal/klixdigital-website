@@ -179,7 +179,7 @@ h3 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); }
   align-items: center;
   justify-content: space-between;
 }
-.nav-logo img { height: 34px; }
+.nav-logo img { height: 46px; }
 .nav-links {
   display: flex;
   align-items: center;
@@ -405,7 +405,7 @@ h3 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); }
 /* ---------- Footer ---------- */
 .footer { padding: 90px 0 40px; border-top: 1px solid var(--border); }
 .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 70px; }
-.footer-logo img { height: 32px; margin-bottom: 20px; }
+.footer-logo img { height: 42px; margin-bottom: 20px; }
 .footer p.desc { color: var(--text-dim); font-size: 0.9rem; max-width: 280px; }
 .footer h4 { font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 20px; font-family: var(--font-body); font-weight: 600; }
 .footer ul li { margin-bottom: 12px; }
